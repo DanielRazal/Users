@@ -1,0 +1,35 @@
+<header class="fixed top-0 left-0 right-0 z-10">
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-14 lg:h-14">
+                <img *ngIf="user && user.photoUrl" [src]="getPhotoUrl(user.photoUrl)" alt="User Photo"
+                    class="w-full h-full rounded-full ml-1 sm:ml-6 md:ml-8 lg:ml-0">
+            </div>
+            <div class="flex items-center lg:order-2">
+                <a routerLink="/home" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700
+                    focus:outline-none dark:focus:ring-gray-800">Home</a>
+                <a routerLink="/info" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700
+                    focus:outline-none dark:focus:ring-gray-800">Info</a>
+                <a routerLink="/update" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700
+                    focus:outline-none dark:focus:ring-gray-800">Update</a>
+                <a class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                        font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700
+                        focus:outline-none dark:focus:ring-gray-800 cursor-pointer" (click)="deleteUser()">Delete</a>
+
+                <a class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 
+                    font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700
+                    focus:outline-none dark:focus:ring-gray-800 cursor-pointer" (click)="LogOut()">LogOut</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<footer class="fixed bottom-0 left-0 right-0 bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+    <div class="container mx-auto text-center">
+        <p class="text-gray-600">© 2023 Your Company. All rights reserved.</p>
+    </div>
+</footer>
