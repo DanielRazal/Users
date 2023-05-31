@@ -32,8 +32,8 @@ To run the Users project, follow these steps:
 
 1. **Server**: Open a terminal or command prompt and navigate to the server project directory:
 
-**cd C:\Users\97250\Desktop\Users\Users Api\Users Server**
+   **cd C:\Users\97250\Desktop\Users\Users Api\Users Server**
 
 2. Run the following command to start the server:
 
-**dotnet run**
+   **dotnet run**
