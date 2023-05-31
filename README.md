@@ -25,3 +25,15 @@ The client-side of the Users project includes the following features:
 - **Authorization and Authentication**: The client application utilizes AuthGuard and canActivate to enforce authorization and authentication for protected routes.
 - **HTTP Requests**: Angular's HttpClientModule is used for making HTTP requests from the client application to the server's APIs.
 - **Alerts and Notifications**: The Swal (SweetAlert) library is used to display user-friendly alerts and notifications in the client application.
+
+## Running the Project
+
+To run the Users project, follow these steps:
+
+1. **Server**: Open a terminal or command prompt and navigate to the server project directory:
+
+**cd C:\Users\97250\Desktop\Users\Users Api\Users Server**
+
+2. Run the following command to start the server:
+
+**dotnet run**
