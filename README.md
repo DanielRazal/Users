@@ -11,7 +11,7 @@ https://github.com/DanielRazal/Users.git
 **Server**:
 1. Clone the repository by running the following command in your terminal or command prompt:
 
-   git clone https://github.com/DanielRazal/Users.git
+   **git clone https://github.com/DanielRazal/Users.git**
    
 2. Open a terminal or command prompt and navigate to the server project directory:
 
@@ -21,7 +21,7 @@ https://github.com/DanielRazal/Users.git
 
    **dotnet run**
    
-**Client**
+**Client**:
 
 1. Open another terminal or command prompt and navigate to the client project directory:
 
