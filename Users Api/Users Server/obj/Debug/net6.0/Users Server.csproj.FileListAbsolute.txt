@@ -285,3 +285,10 @@ C:\Users\97250\Desktop\Users\Users Api\Users Server\obj\Debug\net6.0\refint\User
 C:\Users\97250\Desktop\Users\Users Api\Users Server\obj\Debug\net6.0\Users Server.pdb
 C:\Users\97250\Desktop\Users\Users Api\Users Server\obj\Debug\net6.0\Users Server.genruntimeconfig.cache
 C:\Users\97250\Desktop\Users\Users Api\Users Server\obj\Debug\net6.0\ref\Users Server.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\97250\Desktop\Users\Users Api\Users Server\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll

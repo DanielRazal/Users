@@ -19,20 +19,14 @@ builder.Services.AddCors(setup =>
     setup.AddPolicy("CorsPolicy", options =>
     {
         options.AllowAnyMethod().AllowAnyHeader()
-        .AllowAnyOrigin().WithOrigins(builder.Configuration["Cors:Angular"]);
+        .AllowAnyOrigin().WithOrigins(builder.Configuration["Cors:Angular"]!);
     });
 });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminOnly", policy =>
-    {
-        policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
-        policy.RequireRole("ADMIN");
-    });
-});
+var configuration = builder.Configuration;
+configuration.AddUserSecrets<Program>();
 
-var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("TokenKey")!);
+var key = Encoding.ASCII.GetBytes(configuration["TokenKey"]!);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
 AddJwtBearer(options =>

@@ -17,8 +17,8 @@ namespace Users_Server.Services
             var sendGridConfig = _configuration.GetSection("SendGrid");
             var emailSender = sendGridConfig.GetValue<string>("EmailSender");
             var senderName = sendGridConfig.GetValue<string>("SenderName");
+            var apiKey = _configuration.GetValue<string>("ApiKey");
 
-            var apiKey = Environment.GetEnvironmentVariable("ApiKey");
             if (apiKey == null)
             {
                 throw new ArgumentNullException("API key is not found.");
