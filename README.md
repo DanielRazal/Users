@@ -5,8 +5,6 @@
 ## Running the Project
 
 To run the Users project, follow these steps:
-1. Clone the repository:
-https://github.com/DanielRazal/Users.git
 
 **Server**:
 1. Clone the repository by running the following command in your terminal or command prompt:
