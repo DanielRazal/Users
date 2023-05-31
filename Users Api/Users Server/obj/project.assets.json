@@ -4020,11 +4020,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\97250\\Desktop\\UsersProject\\Users Server\\Users Server\\Users Server.csproj",
+      "projectUniqueName": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\Users Server.csproj",
       "projectName": "Users Server",
-      "projectPath": "C:\\Users\\97250\\Desktop\\UsersProject\\Users Server\\Users Server\\Users Server.csproj",
+      "projectPath": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\Users Server.csproj",
       "packagesPath": "C:\\Users\\97250\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\97250\\Desktop\\UsersProject\\Users Server\\Users Server\\obj\\",
+      "outputPath": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

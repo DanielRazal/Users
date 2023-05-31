@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "odZ9zecRsIws4E47IccmVWF4P9RB4jv82em+4M4hTfw=",
+  "Hash": "FiJNHCj8Yel2IlP4pqdL1a7PnEWcfyuBVywDnhXY0oI=",
   "Source": "Users Server",
   "BasePath": "_content/Users Server",
   "Mode": "Default",
@@ -10,17 +10,34 @@
     {
       "Name": "Users Server\\wwwroot",
       "Source": "Users Server",
-      "ContentRoot": "C:\\Users\\97250\\Desktop\\UsersProject\\Users Server\\Users Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
       "BasePath": "_content/Users Server",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\97250\\Desktop\\UsersProject\\Users Server\\Users Server\\wwwroot\\Uploads\\9878df85-a92a-4f3b-8e09-538189fec4a4.jpg",
+      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\526dc77a-9acf-4aa8-8d9c-3f2896c8100f.jpg",
       "SourceId": "Users Server",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\97250\\Desktop\\UsersProject\\Users Server\\Users Server\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
+      "BasePath": "_content/Users Server",
+      "RelativePath": "Uploads/526dc77a-9acf-4aa8-8d9c-3f2896c8100f.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\526dc77a-9acf-4aa8-8d9c-3f2896c8100f.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\9878df85-a92a-4f3b-8e09-538189fec4a4.jpg",
+      "SourceId": "Users Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
       "BasePath": "_content/Users Server",
       "RelativePath": "Uploads/9878df85-a92a-4f3b-8e09-538189fec4a4.jpg",
       "AssetKind": "All",

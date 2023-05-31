@@ -33,6 +33,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 var key = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("TokenKey")!);
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
 AddJwtBearer(options =>
 {
