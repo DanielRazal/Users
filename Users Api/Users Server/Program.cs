@@ -9,6 +9,7 @@ global using Users_Server.Token;
 global using Users_Server.Repositories;
 global using Users_Server.Services;
 global using Users_Server.Models;
+using Users_Server.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,11 @@ builder.Services.AddCors(setup =>
 {
     setup.AddPolicy("CorsPolicy", options =>
     {
-        options.AllowAnyMethod().AllowAnyHeader()
-        .AllowAnyOrigin().WithOrigins(builder.Configuration["Cors:Angular"]!);
+        options.AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowAnyOrigin()
+            .WithOrigins(builder.Configuration["Cors:Angular"]!)
+            .AllowCredentials();
     });
 });
 
@@ -51,8 +55,11 @@ builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUploadPhotos, UploadPhotos>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -75,12 +82,12 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 
-//using (var scope = app.Services.CreateScope())
-//{
+// using (var scope = app.Services.CreateScope())
+// {
 //    var ctx = scope.ServiceProvider.GetRequiredService<UsersDBContext>();
 //    ctx.Database.EnsureDeleted();
 //    ctx.Database.EnsureCreated();
-//}
+// }
 
 if (app.Environment.IsDevelopment())
 {
@@ -95,10 +102,18 @@ app.UseCors("CorsPolicy");
 
 app.UseStaticFiles();
 
+app.UseRouting(); 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHub<UserHub>("/userhub");
+});
 
 app.Run();

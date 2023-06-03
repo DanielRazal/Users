@@ -12,6 +12,7 @@ import { InsiteHeaderComponent } from './components/insite-header/insite-header.
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { ProjectInfoComponent } from './components/project-info/project-info.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     UpdateUserComponent,
     ProjectInfoComponent,
     NotFoundComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@
 {
     public enum UserRole
     {
+        MAIN_ADMIN,
         ADMIN,
         USER
     }

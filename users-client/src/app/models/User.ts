@@ -1,4 +1,5 @@
 import { UserRole } from "../enum/userRole";
+import Message from "./Message";
 
 export default class User {
     id: number = -1;
@@ -12,4 +13,5 @@ export default class User {
     statusCode: string = "";
     user !: User;
     role: UserRole = UserRole.USER;
+    messages: Array<Message> = [];
 }

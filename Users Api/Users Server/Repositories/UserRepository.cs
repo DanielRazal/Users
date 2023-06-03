@@ -10,8 +10,11 @@ namespace Users_Server.Repositories
 
         public async Task<List<User>> GetAllUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(u => u.Messages)
+                .ToListAsync();
         }
+
 
         public async Task<User> DeleteUser(int id)
         {
@@ -51,7 +54,9 @@ namespace Users_Server.Repositories
 
         public async Task<User> GetUserById(int id)
         {
-            var user = await _context.Users.FindAsync(id)!;
+            var user = await _context.Users
+                .Include(u => u.Messages)
+                .FirstOrDefaultAsync(u => u.Id == id);
             if (user != null)
                 return user;
             else return null!;
@@ -69,7 +74,10 @@ namespace Users_Server.Repositories
 
         public async Task<User> GetUserByUserName(string userName)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+            var user = await _context.Users
+                .Include(u => u.Messages)
+                .FirstOrDefaultAsync(u => u.UserName == userName);
+                
             if (user != null)
             {
                 return user!;
@@ -118,5 +126,6 @@ namespace Users_Server.Repositories
             var _user = await _context.Users.AnyAsync(x => x.Email == email.ToLower());
             return _user;
         }
+
     }
 }

@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Users_Server.Enum;
 using Users_Server.ViewModels;
+using Microsoft.AspNetCore.SignalR;
+using Users_Server.Hubs;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Users_Server.Controllers
 {
@@ -14,34 +18,56 @@ namespace Users_Server.Controllers
         private readonly IUploadPhotos _uploads;
         private readonly IEmailSender _emailSender;
         private readonly IConfiguration _config;
+        private readonly IHubContext<UserHub> _hubContext;
+
+
 
         public UserController(IUserRepository repo, IJwtTokenGenerator token,
-         IUploadPhotos uploads, IEmailSender emailSender, IConfiguration config)
+         IUploadPhotos uploads, IEmailSender emailSender, IConfiguration config, IHubContext<UserHub> hubContext)
         {
             _repo = repo;
             _token = token;
             _uploads = uploads;
             _emailSender = emailSender;
             _config = config;
+            _hubContext = hubContext;
         }
 
         [HttpGet]
         public async Task<ActionResult> GetAllUsers()
         {
             var users = await _repo.GetAllUsers();
-            return Ok(users);
+            var json = JsonSerializer.Serialize(users, new JsonSerializerOptions
+            {
+                ReferenceHandler = null,
+                IncludeFields = true,
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            return Ok(json);
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetUserById(int id)
         {
             var _user = await _repo.GetUserById(id);
+
             if (_user == null)
             {
                 return NotFound($"Id: '{id}' not exist");
             }
 
-            return Ok(_user);
+            var json = JsonSerializer.Serialize(_user, new JsonSerializerOptions
+            {
+                ReferenceHandler = null,
+                IncludeFields = true,
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            return Ok(json);
         }
 
         [HttpPost("registration")]
@@ -165,7 +191,8 @@ namespace Users_Server.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Id = user.Id,
-                Role = user.Role
+                Role = user.Role,
+                Messages = user.Messages
             };
 
             var isAuthenticated = await _repo.Login(_user);
@@ -200,25 +227,6 @@ namespace Users_Server.Controllers
             return Ok(new { message = "Your Username and Password have been sent to your email", StatusCode = 200 });
         }
 
-        // [HttpPatch("assign-role")]
-        // // [Authorize(Roles = "ADMIN")]
-        // public async Task<ActionResult> AssignRole(int id, UserRole userRole)
-        // {
-        //     var user = await _repo.GetUserById(id);
-
-        //     if (user == null)
-        //     {
-        //         return NotFound($"User with ID: '{id}' not found");
-        //     }
-
-        //     user.Role = userRole;
-
-        //     var userUpdated = await _repo.UpdateUser(user, id);
-
-        //     return Ok(userUpdated);
-        // }
-
-        // [Authorize(Policy = "AdminOnly")]
         [HttpPatch("assign-role")]
         public async Task<ActionResult> AssignRole(int id, UserRole userRole)
         {
@@ -235,6 +243,5 @@ namespace Users_Server.Controllers
 
             return Ok(updated);
         }
-
     }
 }

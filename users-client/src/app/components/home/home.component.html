@@ -1,102 +1,106 @@
 <app-insite-header></app-insite-header>
 
 <div class="text-center mt-24">
-    <ng-container *ngIf="user.role === UserRole.ADMIN; else userGreeting">
+    <ng-container [ngSwitch]="user.role">
+        <ng-container *ngSwitchCase="UserRole.MAIN_ADMIN">
 
-        <div class="text-xl font-bold mb-4 sm:text-4xl">
-            <h1>Welcome Admin {{user.firstName}} {{user.lastName}} to our site!</h1>
-        </div>
+            <div class="text-xl font-bold mb-4 sm:text-4xl">
+                <h1>Welcome Admin {{user.firstName}} {{user.lastName}} to our site!</h1>
+            </div>
 
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-80 mt-8">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="table-layout: fixed;">
 
-
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-80 mt-8">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="table-layout: fixed;">
-
-                <colgroup>
-                    <col style="width: 25%;" />
-                    <col style="width: 25%;" />
-                    <col style="width: 25%;" />
-                    <col style="width: 25%;" />
-                </colgroup>
-                <thead
-                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Photo
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            FullName
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            UserName
-                        </th>
-                        <th scope="col" class="px-6 py-3 flex items-center justify-center">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users"
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <div class="w-14 h-14">
-                                    <img *ngIf="user && user.photoUrl" [src]="getPhotoUrl(user.photoUrl)"
-                                        alt="User Photo" class="w-full h-full rounded-full ml-0">
+                    <colgroup>
+                        <col style="width: 25%;" />
+                        <col style="width: 25%;" />
+                        <col style="width: 25%;" />
+                        <col style="width: 25%;" />
+                    </colgroup>
+                    <thead
+                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Photo
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                FullName
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                UserName
+                            </th>
+                            <th scope="col" class="px-6 py-3 flex items-center justify-center">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users"
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="w-4 p-4">
+                                <div class="flex items-center">
+                                    <div class="w-14 h-14">
+                                        <img *ngIf="user && user.photoUrl" [src]="getPhotoUrl(user.photoUrl)"
+                                            alt="User Photo" class="w-full h-full rounded-full ml-0">
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 dark:text-white text-gray-900">
-                            <div class="pl-5 pt-3">
-                                <div class="text-base font-semibold">{{user.firstName}} {{user.lastName}}</div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 dark:text-white text-gray-900">
-                            <div class="pl-5 pt-3">
-                                <div class="text-base font-semibold">{{user.userName}}</div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 dark:text-white text-gray-900">
-                            <div class="relative">
-                                <select [(ngModel)]="user.role" (change)="ChangeRole(user)"
-                                    class="block appearance-none w-full max-w-lg bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            </td>
+                            <td class="px-6 py-4 dark:text-white text-gray-900">
+                                <div class="pl-5 pt-3">
+                                    <div class="text-base font-semibold">{{user.firstName}} {{user.lastName}}</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 dark:text-white text-gray-900">
+                                <div class="pl-5 pt-3">
+                                    <div class="text-base font-semibold">{{user.userName}}</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 dark:text-white text-gray-900">
+                                <div class="relative">
+                                    <select [(ngModel)]="user.role" (change)="ChangeRole(user)"
+                                        class="block appearance-none w-full max-w-lg bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
 
-                                    <option *ngFor="let role of userRoles" [value]="role.value"
-                                        class="flex items-center text-center">{{ role.label }}</option>
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                                        <option *ngFor="let role of userRoles" [value]="role.value"
+                                            class="flex items-center text-center">{{ role.label }}</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ng-container>
 
+        <ng-container *ngSwitchCase="UserRole.USER">
+            <div class="text-xl font-bold mb-4 sm:text-4xl">
+                <h1>Welcome {{user.firstName}} {{user.lastName}} to our site!</h1>
+            </div>
+            <br>
+            <br>
+            <p class="text-lg text-gray-600">On this site, you can:</p>
+            <ul class="list-none p-0 text-center mx-auto max-w-sm mt-4">
+                <li class="text-lg mb-2">
+                    <span class="text-blue-500">Update your user's details</span>
+                </li>
+                <li class="text-lg mb-2">
+                    <span class="text-green-500">Delete your user</span>
+                </li>
+                <li class="text-lg mb-2">
+                    <span class="text-yellow-300">Delete all users</span>
+                </li>
+                <li class="text-lg mb-2">
+                    <span class="text-red-500">Get an explanation about the project</span>
+                </li>
+                <li class="text-lg mb-2">
+                    <span class="text-purple-700">LogOut</span>
+                </li>
+            </ul>
+        </ng-container>
 
+        <ng-container *ngSwitchCase="UserRole.ADMIN">
+            <div class="text-xl font-bold mb-4 sm:text-4xl">
+                <h1>Welcome Admin {{user.firstName}} {{user.lastName}} to our site!</h1>
+            </div>
+        </ng-container>
     </ng-container>
-
-    <ng-template #userGreeting>
-        <div class="text-xl font-bold mb-4 sm:text-4xl">
-            <h1>Welcome {{user.firstName}} {{user.lastName}} to our site!</h1>
-        </div>
-        <br>
-        <br>
-        <p class="text-lg text-gray-600">On this site, you can:</p>
-        <ul class="list-none p-0 text-center mx-auto max-w-sm mt-4">
-            <li class="text-lg mb-2">
-                <span class="text-blue-500">Update your user's details</span>
-            </li>
-            <li class="text-lg mb-2">
-                <span class="text-green-500">Delete your user</span>
-            </li>
-            <li class="text-lg mb-2">
-                <span class="text-yellow-300">Delete all users</span>
-            </li>
-            <li class="text-lg mb-2">
-                <span class="text-red-500">Get an explanation about the project</span>
-            </li>
-            <li class="text-lg mb-2">
-                <span class="text-purple-700">LogOut</span>
-            </li>
-        </ul>
-    </ng-template>
 </div>

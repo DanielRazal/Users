@@ -17,5 +17,6 @@ namespace Users_Server.Models
         public string Email { get; set; } = string.Empty;
         public string PhotoUrl { get; set; } = string.Empty;
         public UserRole Role { get; set; } = UserRole.USER;
+        public virtual ICollection<Message> Messages { get; set; } = null!;
     }
 }

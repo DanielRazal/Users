@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       .subscribe((res) => {
         this.cookieService.set('token', res.token);
         this.cookieService.set('user', JSON.stringify(res._user));
+        console.log(res._user);
+        
         this.router.navigate(['home']);
         this.loginForm.reset();
         this.swalService.success('Success', res.message, `Status code: ${res.statusCode}`);

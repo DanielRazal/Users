@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserRole } from 'src/app/enum/userRole';
 import User from 'src/app/models/User';
+import { SignalRService } from 'src/app/services/signal-r.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -15,11 +16,13 @@ export class HomeComponent implements OnInit {
   users: User[] = [];
   UserRole = UserRole;
   userRoles = [
+    { label: 'Main Admin', value: UserRole.MAIN_ADMIN },
     { label: 'Admin', value: UserRole.ADMIN },
-    { label: 'User', value: UserRole.USER },
+    { label: 'User', value: UserRole.USER }
   ];
 
-  constructor(private cookieService: CookieService, private userService: UsersService) { }
+  constructor(private cookieService: CookieService, private userService: UsersService,
+    private signalRService: SignalRService) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(this.cookieService.get('user'));
@@ -27,25 +30,19 @@ export class HomeComponent implements OnInit {
     this.getAllUsers();
   }
 
-
+  getAllUsers() {
+    this.userService.getAllUsers().subscribe((users) => {
+      this.users = users.filter(user => user.role !== UserRole.MAIN_ADMIN);
+    });
+  }
 
   getPhotoUrl(photoUrl: string): string {
     return this.userService.getPhotoUrl(photoUrl);
   }
 
-  getAllUsers() {
-    this.userService.getAllUsers().subscribe((users) => {
-      this.users = users;
-    })
-  }
-
   ChangeRole(user: User) {
     this.userService.assignUserRole(user.id, user.role).subscribe(
-      (res) => {
-        debugger;
-        this.cookieService.delete('user');
-        const updatedUser = user;
-        this.cookieService.set('user', JSON.stringify(updatedUser));
+      () => {
         alert('Role successfully updated');
       },
       error => {

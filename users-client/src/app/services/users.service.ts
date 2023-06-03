@@ -9,10 +9,11 @@ import { UserRole } from '../enum/userRole';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
 
   private baseUrl = environment.baseUrl;
-  private api = environment.api;
+  private api = environment.userApi;
   private loginUrl = environment.login;
   private detailsUrl = environment.details;
   private registration = environment.registration;
@@ -67,9 +68,23 @@ export class UsersService {
       userRole, this.headers());
   }
 
+  // mapUserRole(role: UserRole): string {
+  //   return role === UserRole.ADMIN ? 'ADMIN' : 'USER';
+  // }
+
   mapUserRole(role: UserRole): string {
-    return role === UserRole.ADMIN ? 'ADMIN' : 'USER';
+    switch (role) {
+      case UserRole.MAIN_ADMIN:
+        return 'MAIN_ADMIN';
+      case UserRole.ADMIN:
+        return 'ADMIN';
+      case UserRole.USER:
+        return 'USER';
+      default:
+        return '';
+    }
   }
+
 
   getPhotoUrl(photoUrl: string): string {
     const serverBaseUrl = environment.baseUrl;
