@@ -1,11 +1,7 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Users_Server.Enum;
 using Users_Server.ViewModels;
-using Microsoft.AspNetCore.SignalR;
-using Users_Server.Hubs;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Users_Server.Controllers
 {
@@ -18,19 +14,15 @@ namespace Users_Server.Controllers
         private readonly IUploadPhotos _uploads;
         private readonly IEmailSender _emailSender;
         private readonly IConfiguration _config;
-        private readonly IHubContext<UserHub> _hubContext;
-
-
 
         public UserController(IUserRepository repo, IJwtTokenGenerator token,
-         IUploadPhotos uploads, IEmailSender emailSender, IConfiguration config, IHubContext<UserHub> hubContext)
+         IUploadPhotos uploads, IEmailSender emailSender, IConfiguration config)
         {
             _repo = repo;
             _token = token;
             _uploads = uploads;
             _emailSender = emailSender;
             _config = config;
-            _hubContext = hubContext;
         }
 
         [HttpGet]

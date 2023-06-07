@@ -1,6 +1,5 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.Extensions.Configuration;
 
 namespace Users_Server.Token
 {
@@ -13,8 +12,6 @@ namespace Users_Server.Token
         }
         public string GenerateToken(User user)
         {
-            // var secret = Environment.GetEnvironmentVariable("TokenKey");
-
             var secret = _configuration.GetValue<string>("TokenKey");
 
             if (secret == null)

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserRole } from 'src/app/enum/userRole';
 import User from 'src/app/models/User';
-import { SignalRService } from 'src/app/services/signal-r.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -21,8 +20,7 @@ export class HomeComponent implements OnInit {
     { label: 'User', value: UserRole.USER }
   ];
 
-  constructor(private cookieService: CookieService, private userService: UsersService,
-    private signalRService: SignalRService) { }
+  constructor(private cookieService: CookieService, private userService: UsersService) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(this.cookieService.get('user'));

@@ -1,8 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
-using Users_Server.Hubs;
 
 namespace Users_Server.Controllers
 {
@@ -12,19 +10,16 @@ namespace Users_Server.Controllers
     {
         private readonly IMessageRepository _messageRepo;
         private readonly IUserRepository _userRepo;
-        private readonly IHubContext<UserHub> _hubContext;
 
 
-        public MessageController(IMessageRepository messageRepo, IUserRepository userRepo,
-        IHubContext<UserHub> hubContext)
+        public MessageController(IMessageRepository messageRepo, IUserRepository userRepo)
         {
             _messageRepo = messageRepo;
             _userRepo = userRepo;
-            _hubContext = hubContext;
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllUsers()
+        public async Task<ActionResult> GetAllMessages()
         {
             var messages = await _messageRepo.GetAllMessages();
 
@@ -34,13 +29,13 @@ namespace Users_Server.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> SendMessage(MessageDto messageDto, int id)
+        public async Task<ActionResult<Message>> AddMessage(MessageDto messageDto, int id)
         {
             var _user = await _userRepo.GetUserById(id);
 
             if (_user == null)
             {
-                return NotFound();
+                return Unauthorized("Not Authorized");
             }
 
             var message = new Message
@@ -50,22 +45,14 @@ namespace Users_Server.Controllers
                 User = _user
             };
 
-            var options = new JsonSerializerOptions
+            if (message == null)
             {
-                ReferenceHandler = ReferenceHandler.Preserve
-            };
+                return BadRequest();
+            }
 
             var messages = await _messageRepo.AddMessage(message);
-            var json = JsonSerializer.Serialize(messages, new JsonSerializerOptions
-            {
-                ReferenceHandler = ReferenceHandler.IgnoreCycles,
-                IncludeFields = true,
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            });
 
-            return Ok(json);
-            // await _hubContext.Clients.All.SendAsync("ReceiveMessage", message.User, message.Content);
+            return Ok(messages);
         }
 
         [HttpDelete]

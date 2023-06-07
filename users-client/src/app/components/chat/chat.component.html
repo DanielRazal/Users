@@ -5,39 +5,34 @@
     <div class="flex h-screen justify-center items-center">
         <div class="w-full max-w-lg">
             <div class="bg-white rounded-lg shadow-lg">
-                <!-- Chat Header -->
                 <div class="px-6 py-4 border-b">
                     <h2 class="text-lg font-semibold">Chat</h2>
                 </div>
-
-                <!-- Chat Messages -->
                 <div class="chat-container overflow-y-auto px-6 py-4">
-                    <div class="flex flex-col space-y-2">
-                        <div *ngFor="let chatMessage of chatMessages">
-                            <div class="flex"
-                                [ngClass]="{'justify-start': chatMessage.user.id !== user.id, 'justify-end': chatMessage.user.id === user.id}">
-                                <img *ngIf="chatMessage.user && chatMessage.user.photoUrl"
-                                    [src]="getPhotoUrl(chatMessage.user.photoUrl)" alt="User Photo"
-                                    class="w-8 h-8 rounded-full ml-1 sm:ml-2 mr-2">
-                                <div [ngClass]="{'bg-gray-200': chatMessage.user.id !== user.id, 'bg-green-500': chatMessage.user.id === user.id}"
-                                    class="rounded-lg p-3">
-                                    <p class="text-sm"
-                                        [ngClass]="{'text-white': chatMessage.user.id === user.id && user.id !== null}">
-                                        {{ chatMessage.content }}
-                                    </p>
-                                </div>
+                    <div *ngFor="let chatMessage of chatMessages">
+                        <div class="flex"
+                            [ngClass]="{'justify-start': chatMessage.user.id === user.id, 'justify-end': chatMessage.user.id !== user.id}">
+                            <div [ngClass]="{'bg-gray-200': chatMessage.user.id !== user.id, 'bg-green-500': chatMessage.user.id === user.id}"
+                                class="rounded-lg p-3 message-container">
+                                <p class="text-sm" [ngClass]="{'text-white': chatMessage.user.id === user.id}"
+                                    style="word-wrap: break-word;">
+                                    {{ chatMessage.content }}
+                                </p>
                             </div>
+                            <img *ngIf="chatMessage.user && chatMessage.user.photoUrl"
+                                [src]="getPhotoUrl(chatMessage.user.photoUrl)" alt="User Photo"
+                                class="w-8 h-8 rounded-full ml-1 sm:ml-2 mr-2"
+                                [ngClass]="{'order-first': chatMessage.user.id === user.id, 'order-last': chatMessage.user.id !== user.id}">
                         </div>
                     </div>
                 </div>
 
-                <!-- Chat Input -->
                 <div class="px-6 py-4 border-t">
                     <form [formGroup]="messageForm" (ngSubmit)="sendMessage(user,message)">
                         <div class="flex items-center">
                             <input type="text" placeholder="Type a message"
                                 class="flex-1 bg-gray-200 rounded-full px-4 py-2 focus:outline-none"
-                                formControlName="content" [(ngModel)]="message">
+                                formControlName="content">
                             <button type="submit"
                                 class="ml-4 bg-green-500 text-white px-4 py-2 rounded-full">Send</button>
                         </div>
@@ -47,10 +42,3 @@
         </div>
     </div>
 </body>
-
-<style>
-    /* Set a fixed height for the chat container */
-    .chat-container {
-        height: 300px;
-    }
-</style>

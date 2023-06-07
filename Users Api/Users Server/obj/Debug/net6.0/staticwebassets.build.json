@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0KlrE+szoISiaqA2yg2les7gZYzJyAmfsV3Eg9jXp9U=",
+  "Hash": "LpKQGtchY8+y3hqGaKVtqEtsc1iWr6kQYJBbsIGz/XY=",
   "Source": "Users Server",
   "BasePath": "_content/Users Server",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\6db36190-8d34-4784-b1ee-f4061bfe2d93.jpg",
+      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\f0bcdfee-47df-4dde-b796-01b96cd3851f.jpg",
       "SourceId": "Users Server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
       "BasePath": "_content/Users Server",
-      "RelativePath": "Uploads/6db36190-8d34-4784-b1ee-f4061bfe2d93.jpg",
+      "RelativePath": "Uploads/f0bcdfee-47df-4dde-b796-01b96cd3851f.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\6db36190-8d34-4784-b1ee-f4061bfe2d93.jpg"
+      "OriginalItemSpec": "wwwroot\\Uploads\\f0bcdfee-47df-4dde-b796-01b96cd3851f.jpg"
     },
     {
-      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\708e341c-512b-492f-9fed-ae1abc96f17d.jpg",
+      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\f8f4732d-098e-492b-a81f-3c5ec5a1c6c8.jpg",
       "SourceId": "Users Server",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
       "BasePath": "_content/Users Server",
-      "RelativePath": "Uploads/708e341c-512b-492f-9fed-ae1abc96f17d.jpg",
+      "RelativePath": "Uploads/f8f4732d-098e-492b-a81f-3c5ec5a1c6c8.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,58 +48,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\708e341c-512b-492f-9fed-ae1abc96f17d.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\7ef78839-a779-459b-b2f3-fb587404ee00.jpg",
-      "SourceId": "Users Server",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
-      "BasePath": "_content/Users Server",
-      "RelativePath": "Uploads/7ef78839-a779-459b-b2f3-fb587404ee00.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\7ef78839-a779-459b-b2f3-fb587404ee00.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\fb895cb9-0bb6-4deb-b2e3-6e5c2745c0c2.jpg",
-      "SourceId": "Users Server",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
-      "BasePath": "_content/Users Server",
-      "RelativePath": "Uploads/fb895cb9-0bb6-4deb-b2e3-6e5c2745c0c2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\fb895cb9-0bb6-4deb-b2e3-6e5c2745c0c2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\Uploads\\fdff9872-ae89-43c5-9b4f-71c752485b30.jpg",
-      "SourceId": "Users Server",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\97250\\Desktop\\Users\\Users Api\\Users Server\\wwwroot\\",
-      "BasePath": "_content/Users Server",
-      "RelativePath": "Uploads/fdff9872-ae89-43c5-9b4f-71c752485b30.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\fdff9872-ae89-43c5-9b4f-71c752485b30.jpg"
+      "OriginalItemSpec": "wwwroot\\Uploads\\f8f4732d-098e-492b-a81f-3c5ec5a1c6c8.jpg"
     }
   ]
 }

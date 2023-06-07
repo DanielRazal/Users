@@ -9,7 +9,8 @@ global using Users_Server.Token;
 global using Users_Server.Repositories;
 global using Users_Server.Services;
 global using Users_Server.Models;
-using Users_Server.Hubs;
+global using Users_Server.Hubs;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddCors(setup =>
             .AllowAnyOrigin()
             .WithOrigins(builder.Configuration["Cors:Angular"]!)
             .AllowCredentials();
+            
     });
 });
 
@@ -82,6 +84,7 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 
+//Remove all the data from database
 // using (var scope = app.Services.CreateScope())
 // {
 //    var ctx = scope.ServiceProvider.GetRequiredService<UsersDBContext>();
@@ -102,7 +105,7 @@ app.UseCors("CorsPolicy");
 
 app.UseStaticFiles();
 
-app.UseRouting(); 
+app.UseRouting();
 
 app.UseHttpsRedirection();
 

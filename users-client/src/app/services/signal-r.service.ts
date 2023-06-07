@@ -26,7 +26,7 @@ export class SignalRService {
     this.hubConnection.on('ReceiveMessage', callback);
   }
 
-  public sendMessage(user: any, message: string) {
+  public sendMessage(user: User, message: string) {
     this.hubConnection.invoke('SendMessage', user, message)
       .catch(err => console.error('Error while sending SignalR message:', err));
   }

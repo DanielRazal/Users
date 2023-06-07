@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Users Server",
+    "\\Users Server\\Controllers"
   ],
-  "SelectedNode": "\\Users Server.sln",
+  "SelectedNode": "\\Users Server\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }

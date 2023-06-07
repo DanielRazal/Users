@@ -24,7 +24,8 @@ export class UsersService {
 
   private headers() {
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      withCredentials: true
     };
     return httpOptions;
   }
@@ -68,10 +69,6 @@ export class UsersService {
       userRole, this.headers());
   }
 
-  // mapUserRole(role: UserRole): string {
-  //   return role === UserRole.ADMIN ? 'ADMIN' : 'USER';
-  // }
-
   mapUserRole(role: UserRole): string {
     switch (role) {
       case UserRole.MAIN_ADMIN:
@@ -84,7 +81,6 @@ export class UsersService {
         return '';
     }
   }
-
 
   getPhotoUrl(photoUrl: string): string {
     const serverBaseUrl = environment.baseUrl;

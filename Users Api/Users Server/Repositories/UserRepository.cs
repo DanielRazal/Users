@@ -36,7 +36,7 @@ namespace Users_Server.Repositories
         {
             if (!await _context.Users.AnyAsync())
             {
-                _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('User', RESEED, 1)");
+                _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('User', RESEED, 0)");
             }
             user.Id = 0;
             await _context.AddAsync(user);
@@ -77,7 +77,7 @@ namespace Users_Server.Repositories
             var user = await _context.Users
                 .Include(u => u.Messages)
                 .FirstOrDefaultAsync(u => u.UserName == userName);
-                
+
             if (user != null)
             {
                 return user!;

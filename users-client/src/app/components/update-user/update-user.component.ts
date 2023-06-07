@@ -18,6 +18,7 @@ export class UpdateUserComponent implements OnInit {
   updateForm!: FormGroup;
   selectedPhoto: File | undefined;
   user!: User;
+  password = "";
 
   constructor(private formBuilder: FormBuilder, private userService: UsersService
     , private router: Router, private swalService: SwalService, private cookieService: CookieService) { }
@@ -31,6 +32,7 @@ export class UpdateUserComponent implements OnInit {
     });
 
     this.user = JSON.parse(this.cookieService.get('user'));
+    
   }
 
   

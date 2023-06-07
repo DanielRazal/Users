@@ -2,15 +2,18 @@ namespace Users_Server.Repositories
 {
     public class MessageRepository : IMessageRepository
     {
-
         private readonly UsersDBContext _context;
         public MessageRepository(UsersDBContext context)
         {
             _context = context;
         }
-        
+
         public async Task<Message> AddMessage(Message message)
         {
+            if (!await _context.Messages.AnyAsync())
+            {
+                _context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('Messages', RESEED, 0)");
+            }
             message.Id = 0;
             await _context.Messages.AddAsync(message);
             await _context.SaveChangesAsync();
