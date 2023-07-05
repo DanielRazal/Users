@@ -20,7 +20,6 @@ export class ChatComponent implements OnInit {
   chatMessages: { user: User, content: string, messageId: number }[] = [];
 
   message = "";
-  mes = ""
   users: User[] = [];
   messageForm!: FormGroup;
 
