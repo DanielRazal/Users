@@ -7,15 +7,12 @@
 To run the Users project, follow these steps:
 
 **Server**:
-1. Clone the repository by running the following command in your terminal or command prompt:
-
-   **git clone https://github.com/DanielRazal/Users.git**
    
-2. Open a terminal or command prompt and navigate to the server project directory:
+1. Open a terminal or command prompt and navigate to the server project directory:
 
    **cd C:\Users\97250\Desktop\Users\Users Api\Users Server**
    
-3. Start the server by running the following command:
+2. Start the server by running the following command:
 
    **dotnet run**
    
